@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 210 210"
+   height="210mm"
+   width="210mm"
+   sodipodi:docname="sokus-logo-symbolic.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     inkscape:showpageshadow="false"
+     borderlayer="false"
+     inkscape:pagecheckerboard="false"
+     showborder="true"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="266.1752"
+     inkscape:cx="251.02291"
+     inkscape:zoom="0.98994949"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     borderopacity="1"
+     bordercolor="#ffffff"
+     pagecolor="#353535"
+     id="base"
+     width="210mm"
+     inkscape:window-width="1775"
+     inkscape:window-height="1053"
+     inkscape:window-x="495"
+     inkscape:window-y="56"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       id="rect844"
+       style="fill:#ffffff;stroke-width:0.463021;stroke-linejoin:round;stroke-dasharray:1.38906, 1.38906;fill-opacity:1"
+       d="M 3.6258635,44.175521 H 44.175516 V 84.725174 H 3.6258635 Z m 0,40.549653 H 44.175516 V 125.27482 H 3.6258635 Z m -3e-6,40.549646 H 44.175516 v 40.54965 H 3.6258605 Z M 125.27482,44.175521 h 40.54966 V 84.725174 H 125.27482 Z M 84.725169,84.725174 H 125.27482 V 125.27482 H 84.725169 Z m 40.549651,0 h 40.54965 v 40.549646 h -40.54965 z m 40.54966,-40.549653 h 40.54965 v 40.549653 h -40.54965 z m 0,40.549653 h 40.54965 v 40.549646 h -40.54965 z m 0,40.549646 h 40.54965 v 40.54965 h -40.54965 z"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccc" />
+  </g>
+</svg>
