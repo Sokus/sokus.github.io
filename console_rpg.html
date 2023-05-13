@@ -12,13 +12,41 @@
 
         <div class="heading">Console RPG</div>
 
-
+        <p>
+            This projects main purpose is to create a game, entirely under console terminal without any graphic libraries - it was the first
+            project I have ever worked on. Apart from system headers and standard library this project has no dependencies.
+        </p>
 
         <center>
-            <video width="800" controls>
+            <video width="700" controls style="margin-top:1em; margin-bottom:1em">
                 <source src="assets/console_rpg.mp4" type="video/mp4">
             </video>
         </center>
 
+        <p>
+            This project is dependent on two Windows API functions, first one for getting the standard output handle:
+        </p>
+        <pre class="codeblock">
+HANDLE WINAPI GetStdHandle(
+    _In_ DWORD nStdHandle
+);
+        </pre>
+        <p>
+            And the second one that lets us change the color used in the terminal:
+        </p>
+        <pre class="codeblock">
+BOOL WINAPI SetConsoleTextAttribute(
+    _In_ HANDLE hConsoleOutput,
+    _In_ WORD   wAttributes
+);
+        </pre>
+
+        <p>
+            It has only 16 colors to choose from, but by creatively using some ASCII characters (for example ▓▓▒▒░░) we could
+            easily increase the number of perceived colors available to 784. All textures are stored as a series of numbers (color indices) in <code>.txt</code> files.
+        </p>
+        <p>
+            You can look at the entire source code <a href="https://github.com/Sokus/console-rpg" class="post_title">here</a>, although do it at your own risk!
+        </p>
     </body>
 </html>
