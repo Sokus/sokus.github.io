@@ -12,8 +12,24 @@
 
         <div class="heading">Handheld Console</div>
 
-        <img src="assets/handheld/assembled.png" width="48%">
+        <p>
+            Based on the Raspberry Pi Zero 2 and capable of emulating popular retro consoles such as NES, SNES, GBA or PSP.
+            Can also run simple games, if they are Linux and gamepad compatible.
+        </p>
+
+        <img src="assets/handheld/assembled.png" width="48%" style="margin-top:1em;">
         <img src="assets/handheld/electronics.png" width="48%">
+
+        <p>
+            The main challange with this project was getting GPIO and I2C support - since this specific Raspberry Pi model
+            came out just a few weeks before I've started the project I had to write everything from scratch in C - no existing
+            Python library worked on this architecture yet. You can see the source code <a href="https://github.com/Sokus/handheld" class="post_title">here</a>.
+        </p>
+
+        <p>
+            <br>
+            <code>TODO: component list</code>
+        </p>
 
 
     </body>
