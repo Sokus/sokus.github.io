@@ -29,6 +29,10 @@ a:hover {
   font-weight: bold;
   margin-top: 3em;
 }
+.heading time {
+  font-weight: normal;
+  color: #7f7f7f;
+}
 
 .posts {
   margin-top: 3em;
@@ -37,7 +41,7 @@ a:hover {
   margin-bottom: 1em;
 }
 .posts time {
-  color: #7f7f7f
+  color: #7f7f7f;
 }
 .posts .post_title:before {
   content: " ";
