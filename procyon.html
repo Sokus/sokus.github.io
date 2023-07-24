@@ -17,6 +17,14 @@
             I am very curious to see what 333MHz MIPS R4000 CPU, 32MB of RAM and 2MB of GPU memory is capable of.
         </p>
 
+        <div class="heading"><time>27/06/2023</time></div>
+        <p>
+            Using Model 3D (M3D) format turned out to be a bad idea. The exporter messes up the UVs on mesh triangulation and the loader doesn't quite work on the PSP...
+            Thanks to Jacob's <a href="https://github.com/MysteriousJ/Blender-Export-Scripting-Guide">Blender Export Scripting Guide</a> I was able to drop M3D dependency
+            entirely and write my very own Blender exporter and model format - easy to load on PC and PSP. Right know I've got static mesh rendering on both platforms and
+            about to work on skeletal animation next.
+        </p>
+
         <div class="heading"><time>11/05/2023</time></div>
         <p>
             I've decided not to use Model 3D (M3D) format in the client app directly. To render a model on PC or PSP I need to convert the data from M3D's data
