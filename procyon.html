@@ -17,6 +17,20 @@
             I am very curious to see what 333MHz MIPS R4000 CPU, 32MB of RAM and 2MB of GPU memory is capable of.
         </p>
 
+        <div class="heading"><time>14/07/2023</time></div>
+        <p>
+            With model rendering working on both PC and PSP its now time to work on skeletal animation. As it turns out its very easy to get the math wrong -
+            one poorly constructed matrix and your character turns into a <a href="assets/procyon/skeletal_animation_fail.mp4">disorderly mess</a>. Another
+            issue that has to be addressed is the bone count. The model I am using for tests has 31 bones, while PSP has a hardware bone limit of 8. How I decided
+            to go around this limitation is to group the bones together based on the triangles they control and then tried to merge them together to create subskeletons
+            with bone counts lower than 8 that can then be rendered separately. It's basically a Bin Packing Problem with Overlapping Items. This problem is NP-hard
+            so finding the optimal solution cannot be done in reasonable time - my algorithm is supposed to be ran every time a model is being exported,
+            that's why I've settled with a greedy algorithm.
+        </p>
+        <video width="60%" controls style="margin-top:1em;display:block;margin-left:auto;margin-right:auto">
+            <source src="assets/procyon/skeletal_animation_success.mp4" type="video/mp4">
+        </video>
+
         <div class="heading"><time>27/06/2023</time></div>
         <p>
             Using Model 3D (M3D) format turned out to be a bad idea. The exporter messes up the UVs on mesh triangulation and the loader doesn't quite work on the PSP...
