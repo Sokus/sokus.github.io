@@ -14,7 +14,23 @@
         <p>
             This is my current ongoing project in which I am trying to create a Co-Op Action-Adventure game for PC and PlayStation Portable.
             Why the PSP? Well, it was my first childhood console and also the reason I have started learning low-level programming in the first place.
-            I am very curious to see what 333MHz MIPS R4000 CPU, 32MB of RAM and 2MB of GPU memory is capable of.
+        </p>
+
+        <div class="heading"><time>20/08/2023</time></div>
+        <p>
+            For the last few weeks I've been working to implement skeletal animation on the PC. When doing this for the PSP the model exporting part was quite difficult,
+            but the rendering part was pretty easy since the SDK takes care of the bone matrices for you. On PC it was the other way around - it didn't take much time to
+            export the model data, but I did have to implement every transformations applied in the shader by myself - but it works!
+        </p>
+
+        <p>
+            With model rendering working on both PC and PSP its now time to work on skeletal animation. As it turns out its very easy to get the math wrong -
+            one poorly constructed matrix and your character turns into a <a href="assets/procyon/skeletal_animation_fail.mp4">disorderly mess</a>. Another
+            issue that has to be addressed is the bone count. The model I am using for tests has 31 bones, while PSP has a hardware bone limit of 8. How I decided
+            to go around this limitation is to group the bones together based on the triangles they control and then tried to merge them together to create subskeletons
+            with bone counts lower than 8 that can then be rendered separately. It's basically a Bin Packing Problem with Overlapping Items. This problem is NP-hard
+            so finding the optimal solution cannot be done in reasonable time - my algorithm is supposed to be ran every time a model is being exported,
+            that's why I've settled with a greedy algorithm.
         </p>
 
         <div class="heading"><time>14/07/2023</time></div>
