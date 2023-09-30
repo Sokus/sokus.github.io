@@ -16,6 +16,18 @@
             Why the PSP? Well, it was my first childhood console and also the reason I have started learning low-level programming in the first place.
         </p>
 
+        <div class="heading"><time>26/09/2023</time></div>
+        <p>
+            After porting everything to Linux I started to clean things up. Skeletal animation examples were standalone mini-projects specific to each
+            platform and there was no way to reuse any of the code, so tied everything up and put it under one abstraction that would let me load and draw animated
+            models. In the meantime I've reworked some aspects of the code, for example replacing complicated general purpose allocator abstraction with a simpler stack allocator.
+            I've allso added some new utilities like custom strings, a pseudo random number generator and a way to get local time on every platform.
+        </p>
+        <video width="60%" controls style="margin-top:1em;display:block;margin-left:auto;margin-right:auto">
+            <source src="assets/procyon/skeletal_animation_abstracted.mp4" type="video/mp4">
+        </video>
+
+
         <div class="heading"><time>16/09/2023</time></div>
         <p>
             I was moving out for work at the beginning of September and I knew the only piece of electronics I will have on me (for the first few weeks at least) is an old
