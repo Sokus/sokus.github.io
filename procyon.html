@@ -16,6 +16,59 @@
             Why the PSP? Well, it was my first childhood console and also the reason I have started learning low-level programming in the first place.
         </p>
 
+        <div class="heading">#10 - Unexpected performance issues <time>14/02/2024</time></div>
+        <p>
+            I theoretically should be done with models already but I was curious how taxing is it on the PSP. I've created a simple scene with 16 animated models, measured the time
+            spent on the game loop and it took... 53 miliseconds. Yeah, with only 16 models our performance drops to 18 FPS. This was a bit of a shock to me, I knew that the model used
+            for tests is quite complex (981 vertices, 4368 indices, 32 bones) but I still expected better than that, something really had to be done.
+        </p>
+        <p>
+            I've started with placing more probes into the code to measure how much each rendering stage took:
+        </p>
+        <pre class="codeblock">
+REGION                            TOTAL COUNT AVERAGE
+game loop                        53.486     1 53.4860
+  model draw                     10.996    16  0.6873
+    concatenate animation joints  1.535    16  0.0959
+    calculate matrices            2.107    16  0.1317
+    assign matrices               3.448    64  0.0539
+    issue draw command            1.024    64  0.0160
+  GPU rendering                  42.305     1 42.3050
+        </pre>
+        <p>
+            It is clear that the majority of our frame time is spent waiting for the GPU to finish rendering so my first idea was that it is either skinning that is expensive and takes
+            time or the sheer amount of data is slowing everything down. I've started with reducing the size of vertex elements but unfortunately it didn't help at all, I think it even
+            worsen the GPU rendering time by a negligable amount - maybe the values have to be converted back to float before use? My only option then is to try an optimize the skinning.
+            If you remember post #5 the way we are currently dealing with bones is that we split up the 32 bone skeleton into 4 smaller ones with 8 bones each. This works but what
+            bothers me is that we never actually use 8 bones to render anything - most parts of the models would only have 1-3 bone weights with remaining ones being zeroes:
+        </p>
+        <pre class="codeblock">
+      BONE WEIGHTS      | UV | NORMAL | POSITION
+ 1  0  0  0  0  0  0  0 | .. |   ..   |    ..
+.7 .3  0  0  0  0  0  0 | .. |   ..   |    ..
+           ..             ..     ..        ..
+ 0  0  0  0  0 .1 .3 .6 | .. |   ..   |    ..
+ 0  0  0  0  0  0  0  1 | .. |   ..   |    ..
+        </pre>
+        <p>
+            So my next idea was that instead of trying to pack the bones into as few groups as possible I would instead create a separate group for each bone combination found in the
+            model. This increased the number of groups from 4 to 16, but there was no unnecessary padding of bone weights anymore and it indeed improved the performance:
+        </p>
+        <pre class="codeblock">
+REGION                            TOTAL COUNT AVERAGE DIFFERENCE
+game loop                        31.900     1 31.9000    -21.586
+  model draw                     19.384    16  1.2115    + 8.388
+    concatenate animation joints  1.598    16  0.0999
+    calculate matrices            2.115    16  0.1322
+    assign matrices               5.180   256  0.0202    + 1.732
+    issue draw command            3.604   256  0.0141    + 2.580
+  GPU rendering                  12.330     1 12.3300    -29.975
+        </pre>
+        <p>
+            TODO: un-index drawing improvement notes
+        </p>
+        
+ 
         <div class="heading">#9 - Back to networking <time>05/10/2023</time></div>
         <p>
             It is time networking got some attention again - its state didn't change since I started working on models and animations - so far it was a typical client-server
@@ -65,7 +118,7 @@
         <p>
             With model rendering working on both PC and PSP its now time to work on skeletal animation. As it turns out its very easy to get the math wrong -
             one poorly constructed matrix and your character turns into a <a href="assets/procyon/005_skeletal_animation_fail.mp4">disorderly mess</a>. Another
-            issue that has to be addressed is the bone count. The model I am using for tests has 31 bones, while PSP has a hardware bone limit of 8. How I decided
+            issue that has to be addressed is the bone count. The model I am using for tests has 32 bones, while PSP has a hardware bone limit of 8. How I decided
             to go around this limitation is to group the bones together based on the triangles they control and then tried to merge them together to create subskeletons
             with bone counts lower than 8 that can then be rendered separately. It's basically a Bin Packing Problem with Overlapping Items. This problem is NP-hard
             so finding the optimal solution cannot be done in reasonable time - my algorithm is supposed to be ran every time a model is being exported,
