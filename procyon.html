@@ -16,6 +16,23 @@
             Why the PSP? Well, it was my first childhood console and also the reason I have started learning low-level programming in the first place.
         </p>
 
+        <div class="heading">#9 - Back to networking <time>05/10/2023</time></div>
+        <p>
+            It is time networking got some attention again - its state didn't change since I started working on models and animations - so far it was a typical client-server
+            architecture but I was wondering if should change something about it.
+        </p>
+        <p>
+            I want my game to be playable offline with a possibility of cooperating online. At first I was hoping to have every client run their own internal server. Any
+            client could be a host of the game, it would be possible to have host migration if connection was lost and it could reduce the differences between online and offline
+            code paths. I started reorganizing things to go in this direction but the more I worked on it the more questions I had. I didn't know if the PSP could handle being a server,
+            I didn't know how would clients connect to eachother through the internet. There was just many things I didn't know because of my lack of experience so in the end I decided
+            I am getting ahead of myself, abandoned the idea and went back to a simple client-server architecture. It will probably stay this way until there is actually a game to
+            play and I know more about the possibilities or constraints to keep in mind.
+        </p>
+        <video width="80%" controls style="margin-top:1em;display:block;margin-left:auto;margin-right:auto">
+            <source src="assets/procyon/009_back_to_networking.mp4" type="video/mp4">
+        </video>
+
         <div class="heading">#8 <time>26/09/2023</time></div>
         <p>
             After porting everything to Linux I started to clean things up. Skeletal animation examples were standalone mini-projects specific to each
