@@ -33,7 +33,7 @@
         <p>
             I've started with placing more probes into the code to measure how much each rendering stage took:
         </p>
-        <pre class="codeblock">
+        <pre>
 REGION                            TOTAL COUNT AVERAGE
 game loop                        53.486     1 53.4860
   model draw                     10.996    16  0.6873
@@ -50,7 +50,7 @@ game loop                        53.486     1 53.4860
             If you remember post #5 the way we are currently dealing with bones is that we split up the 32 bone skeleton into 4 smaller ones with 8 bones each. This works but what
             bothers me is that we never actually use 8 bones to render anything - most parts of the models would only have 1-3 bone weights with remaining ones being zeroes:
         </p>
-        <pre class="codeblock">
+        <pre>
       BONE WEIGHTS      | UV | NORMAL | POSITION
  1  0  0  0  0  0  0  0 | .. |   ..   |    ..
 .7 .3  0  0  0  0  0  0 | .. |   ..   |    ..
@@ -62,7 +62,7 @@ game loop                        53.486     1 53.4860
             So my next idea was that instead of trying to pack the bones into as few groups as possible I would instead create a separate group for each bone combination found in the
             model. This increased the number of groups from 4 to 16, but there was no unnecessary padding of bone weights anymore and it indeed improved the performance:
         </p>
-        <pre class="codeblock">
+        <pre>
 REGION                            TOTAL COUNT AVERAGE DIFFERENCE
 game loop                        31.900     1 31.9000    -21.586
   model draw                     19.384    16  1.2115    + 8.388
@@ -73,10 +73,28 @@ game loop                        31.900     1 31.9000    -21.586
   GPU rendering                  12.330     1 12.3300    -29.975
         </pre>
         <p>
-            TODO: un-index drawing improvement notes
+            Game loop now takes 32ms (around 31 FPS) which is a litle better, but there is still one thing I want to try out. I remember listening to "PSP Launch Postmortem" lecture
+            that took place during GDC 2005 in which it was pointed out that indexed rendering is hurting the performance because there is no vertex caching on the GPU. Transitioning
+            to un-indexed drawing was as easy as changing one parameter in the export script so I've tried it - the file size almost doubled, but when looking at the profile data I was
+            surprised to see we are down to 17ms per frame!
+        </p>
+        <pre>
+REGION                            TOTAL COUNT AVERAGE DIFFERENCE
+game loop                        16.605     1 16.6050    -15.295
+  model draw                     12.458    16  0.7786     -6.926
+    concatenate animation joints  1.513    16  0.0946     -0.085
+    calculate matrices            2.017    16  0.1261     -0.098
+    assign matrices               2.105   256  0.0082     -3.075
+    issue draw command            2.097   256  0.0082     -1.507
+  GPU rendering                   3.366     1  3.3660     -8.964
+        </pre>
+        <p>
+            If we look at the data now it seems there are two options to gain performance, we either simplify the model reducing the number of bones and meshes or we try to optimize
+            quaternion/matrix calculations. The first option will come eventually when I figure out what kind of models/characters the game is going to need and the second one would
+            probably require some familiarity with the Vector Float Processing Unit (VFPU) which is a dedicated co-processor designed for vector operations (similar to SIMD) - I won't
+            spend time on it now because the code is likely to change in the future, I will wait with further optimizations until then.
         </p>
         
- 
         <div class="heading">#9 - Back to networking <time>05/10/2023</time></div>
         <p>
             It is time networking got some attention again - its state didn't change since I started working on models and animations - so far it was a typical client-server
