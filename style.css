@@ -11,7 +11,7 @@ body {
   max-width: 1024px;
   margin: 60px auto 60px auto;
   padding: 0 10px;
-  background: #161616;
+  background: #101010;
   color:#cdaa7d;
 }
 
@@ -35,26 +35,36 @@ a:hover {
     border-bottom: 1px solid #cd950c;
 }
 
-.heading {
-  font-weight: bold;
-  margin-top: 3em;
+.content_block {
+    padding: 1em;
+    background: #161616;
 }
-.heading time {
-  font-weight: normal;
-  color: #7f7f7f;
+.content_block + .content_block {
+    margin-top: 2em;
+}
+.content_block > h2 {
+    margin: 0px;
+}
+.content_block > h2 time {
+    font-weight: normal;
+    color: #7f7f7f;
+}
+.content_block > h2 + p {
+    margin-top: 1em;
+}
+.content_block > h2 + .project_list_item {
+    margin-top: 1em;
 }
 
-.posts {
-  margin-top: 3em;
+.project_list_item + .project_list_item {
+    margin-top: 1em;
 }
-.posts .post_item {
-  margin-bottom: 1em;
+.project_list_item > h2 {
+    margin: 0px;
 }
-.posts time {
-  color: #7f7f7f;
-}
-.posts .post_title:before {
-  content: " ";
+.project_list_item > a + time {
+    font-weight: normal;
+    color: #7f7f7f;
 }
 
 body::-webkit-scrollbar {

@@ -8,19 +8,22 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <a href="index.html">Home</a> <a href="resume.html">Resume</a> <a href="contact.html">Contact</a>
+        <div class="content_block">
+            <a href="index.html">Home</a> <a href="resume.html">Resume</a> <a href="contact.html">Contact</a>
+        </div>
 
-        <div class="heading">Software Renderer [<a href="https://github.com/Sokus/software-renderer">source code</a>]</div>
-        <p>
-            My first experience with C language started with <a href="https://handmadehero.org/">Handmade Hero</a> series hosted by Casey Muratori.
-            Following along forced me to think about how computers actually work and how will my code be ran, I've also learned how to render things
-            onto the screen without any external dependencies - only using Win32 API. There is a clear boundary between platform specific and universal code,
-            which not only helped port the project to Linux, but also allowed the unviersal code to be recompiled while the program was running. One interesting fact
-            is that the entire program runs on one big chunk of memory - there is no dynamic allocations happening on runtime.
-        </p>
-
-        <video width="100%" controls style="margin-top:1em;">
-            <source src="assets/software_renderer.mp4" type="video/mp4">
-        </video>
+        <div class="content_block">
+            <h2>SOFTWARE RENDERER [<a href="https://github.com/Sokus/software-renderer">source code</a>]</h2>
+            <p>
+                My first experience with C language started with <a href="https://handmadehero.org/">Handmade Hero</a> series hosted by Casey Muratori.
+                Following along forced me to think about how computers actually work and how will my code be ran, I've also learned how to render things
+                onto the screen without any external dependencies - only using Win32 API. There is a clear boundary between platform specific and universal code,
+                which not only helped port the project to Linux, but also allowed the unviersal code to be recompiled while the program was running. One interesting fact
+                is that the entire program runs on one big chunk of memory - there is no dynamic allocations happening on runtime.
+            </p>
+            <video width="100%" controls style="margin-top:1em;">
+                <source src="assets/software_renderer.mp4" type="video/mp4">
+            </video>
+        </div>
     </body>
 </html>

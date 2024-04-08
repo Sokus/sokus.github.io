@@ -8,92 +8,95 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <a href="index.html">Home</a> <a href="resume.html">Resume</a> <a href="contact.html">Contact</a>
-
-        <div class="heading">Resume</div>
-        <p>Kacper Piotrowski</p>
-
-        <div class="heading">Projects</div>
-        <div style="margin-top:1em;margin-bottom:1em;">
-            <span style="float:left;"><a href="https://github.com/Sokus/procyon">Procyon - Online Action-Adventure Game</a></span>
-            <span style="display:block;text-align:right;">2023</span>
-            <span style="color:#7f7f7f;">Windows Desktop/PlayStation Portable - C, Win32 API, Direct3D 11, BSD Sockets, PSP SDK</span>
-            <ul>
-                <li>
-                    Implemented a stack data structure for short lifetime allocations (1-2048KB) to
-                    reduce memory fetch times and memory fragmentation on PlayStation Portable.
-                </li>
-                <li>
-                    Came up with an algorithm that splits up model meshes into sub-skeletons to work
-                    around PlayStation Portable's hardware limitation of 8 bones per model and allow
-                    hardware accelerated skeletal animation.
-                </li>
-            </ul>
-        </div>
-        <div style="margin-top:1em;margin-bottom:1em;">
-            <span style="float:left;"><a href="https://github.com/Sokus/engineering-thesis">Engineering Thesis - Co-Op Platformer Game</a></span>
-            <span style="display:block;text-align:right;">2023</span>
-            <span style="color:#7f7f7f;">Windows/Linux Desktops - C/C++, OpenGL, BSD Sockets, Raylib</span>
-            <ul>
-                <li>
-                    Implemented a bit-level serialization system - reads and writes happen on the same codepath to guard against
-                    desynchronization.Integers can be represented with 1 to 32 bits, depending on expected value ranges.
-                </li>
-                <li>
-                    Implemented an Immediate Mode GUI with a layouting system that adapts to content size. The main focus was
-                    to make interface creation and modification easy for other team members.
-                </li>
-            </ul>
-        </div>
-        <div style="margin-top:1em;margin-bottom:1em;">
-            <span style="float:left;"><a href="https://github.com/Sokus/handheld" class="post_title">Handheld Console</a></span>
-            <span style="display:block;text-align:right;">2022</span>
-            <span style="color:#7f7f7f;">Raspberry Pi Zero 2 W - C, Linux API, I2C Protocol</span>
-            <ul><li>Implemented an interface for reading pin states and analog values on hardware unsupported by existing libraries.</li></ul>
-        </div>
-        <div style="margin-top:1em;margin-bottom:1em;">
-            <span style="float:left;"><a href="https://github.com/Sokus/software-renderer" class="post_title">Software Renderer</a></span>
-            <span style="display:block;text-align:right;">2021</span>
-            <span style="color:#7f7f7f;">Windows/Linux Desktops – C, Win32/Linux API, SDL2</span>
-            <ul>
-                <li>
-                    Separated platform independent code, contained it in a library and stored its context in a contiguous block
-                    of memory provided by the loading process. The library can be recompiled at runtime but the context persists.
-                </li>
-            </ul>
+        <div class="content_block">
+            <a href="index.html">Home</a> <a href="resume.html">Resume</a> <a href="contact.html">Contact</a>
         </div>
 
-
-        <div class="heading">Work Experience</div>
-        <div style="margin-top:1em;margin-bottom:1em;">
-            <span style="font-weight:bold;float:left;">Etteplan - Embedded Software Trainee</span>
-            <span style="display:block;text-align:right;">July 2022 - Oct. 2022</span>
-            <span style="float:left;color:#7f7f7f;">SCons, Jenkins, TestRail, ABB Drive Composer</span>
-            <span style="display:block;text-align:right;">Poznań</span>
+        <div class="content_block">
+            <h2>KACPER PIOTROWSKI</h2>
         </div>
-        <div style="margin-top:1em;margin-bottom:1em;">
-            <span style="font-weight:bold;float:left;">Etteplan - Junior Software Architecture Engineer</span>
-            <span style="display:block;text-align:right;">Sep. 2023 - Present</span>
-            <span style="float:left;color:#7f7f7f;">Azure, Jenkins, C++</span>
-            <span style="display:block;text-align:right;">Poznań</span>
+        
+        <div class="content_block">
+            <h2>PROJECTS</h2>
+            <div class="project_list_item">
+                <span style="float:left;"><a href="https://github.com/Sokus/procyon">Procyon - Online Action-Adventure Game</a></span>
+                <span style="display:block;text-align:right;">2023</span>
+                <span style="color:#7f7f7f;">Windows Desktop/PlayStation Portable - C, Win32 API, Direct3D 11, BSD Sockets, PSP SDK</span>
+                <ul>
+                    <li>
+                        Implemented a stack data structure for short lifetime allocations (1-2048KB) to
+                        reduce memory fetch times and memory fragmentation on PlayStation Portable.
+                    </li>
+                    <li>
+                        Came up with an algorithm that splits up model meshes into sub-skeletons to work
+                        around PlayStation Portable's hardware limitation of 8 bones per model and allow
+                        hardware accelerated skeletal animation.
+                    </li>
+                </ul>                
+            </div>
+            <div class="project_list_item">
+                <span style="float:left;"><a href="https://github.com/Sokus/engineering-thesis">Engineering Thesis - Co-Op Platformer Game</a></span>
+                <span style="display:block;text-align:right;">2023</span>
+                <span style="color:#7f7f7f;">Windows/Linux Desktops - C/C++, OpenGL, BSD Sockets, Raylib</span>
+                <ul>
+                    <li>
+                        Implemented a bit-level serialization system - reads and writes happen on the same codepath to guard against
+                        desynchronization.Integers can be represented with 1 to 32 bits, depending on expected value ranges.
+                    </li>
+                    <li>
+                        Implemented an Immediate Mode GUI with a layouting system that adapts to content size. The main focus was
+                        to make interface creation and modification easy for other team members.
+                    </li>
+                </ul>
+            </div>
+            <div class="project_list_item">
+                <span style="float:left;"><a href="https://github.com/Sokus/handheld" class="post_title">Handheld Console</a></span>
+                <span style="display:block;text-align:right;">2022</span>
+                <span style="color:#7f7f7f;">Raspberry Pi Zero 2 W - C, Linux API, I2C Protocol</span>
+                <ul><li>Implemented an interface for reading pin states and analog values on hardware unsupported by existing libraries.</li></ul>
+            </div>
+            <div class="project_list_item">
+                <span style="float:left;"><a href="https://github.com/Sokus/software-renderer" class="post_title">Software Renderer</a></span>
+                <span style="display:block;text-align:right;">2021</span>
+                <span style="color:#7f7f7f;">Windows/Linux Desktops – C, Win32/Linux API, SDL2</span>
+                <ul>
+                    <li>
+                        Separated platform independent code, contained it in a library and stored its context in a contiguous block
+                        of memory provided by the loading process. The library can be recompiled at runtime but the context persists.
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="heading">Education</div>
-        <div style="margin-top:1em;margin-bottom:1em;">
-            <span style="font-weight:bold;float:left;">University of Technology in Poznań</span>
-            <span style="display:block;text-align:right;">2019 - 2023</span>
-            <span style="float:left;">Engineer's Degree, Computer Science</span>
-            <span style="display:block;text-align:right;">Poznań</span>
+        <div class="content_block">
+            <h2>WORK EXPERIENCE</h2>
+            <div class="project_list_item">
+                <span style="font-weight:bold;float:left;">Etteplan - Embedded Software Trainee</span>
+                <span style="display:block;text-align:right;">July 2022 - Oct. 2022</span>
+                <span style="float:left;color:#7f7f7f;">SCons, Jenkins, TestRail, ABB Drive Composer</span>
+                <span style="display:block;text-align:right;">Poznań</span>
+            </div>
+            <div class="project_list_item">
+                <span style="font-weight:bold;float:left;">Etteplan - Junior Software Architecture Engineer</span>
+                <span style="display:block;text-align:right;">Sep. 2023 - Present</span>
+                <span style="float:left;color:#7f7f7f;">Azure, Jenkins, C++</span>
+                <span style="display:block;text-align:right;">Poznań</span>
+            </div>        
         </div>
 
-
-        <div class="heading">Certifications</div>
-        <ul style="margin-top:1em;">
-            <li style="float:left;">
-                English Cambridge C1 Advanced (CAE)
-            </li> <span style="display:block;text-align:right;">2019</span>
-        </ul>
-
-
+        <div class="content_block">
+            <h2>EDUCATION</h2>
+            <div class="project_list_item">
+                <span style="font-weight:bold;float:left;">University of Technology in Poznań</span>
+                <span style="display:block;text-align:right;">2019 - 2023</span>
+                <span style="float:left;">Engineer's Degree, Computer Science</span>
+                <span style="display:block;text-align:right;">Poznań</span>
+                <ul style="margin-top:1em;">
+                    <li style="float:left;">
+                        English Cambridge C1 Advanced (CAE)
+                    </li> <span style="display:block;text-align:right;">2019</span>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>
