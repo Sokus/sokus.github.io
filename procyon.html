@@ -21,7 +21,27 @@
         <div class="content_block">
             <h2>11 | PROFILING <time>26/02/2024</time></h2>
             <p>
-                TODO
+                Having to deal with performance issues made me think how can I make the process of profiling code easier. It was very tedious to manage timing points by myself so I've
+                started looking for another solution. Luckily I came across <a href="https://gravitymoth.itch.io/spall">spall</a> which is a fast and easy to use profiler that can import
+                traces in Google's <a href="https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU">Trace Event Format</a>.
+            </p>
+            <p>
+                I've created some functions that let me time fragments of code or entire functions - those would produce trace data that is then asynchronously written to a file. At first it
+                was outputting the JSON format directly but this proved to be a bit too much - the PSP could not keep up with this much data so instead I am outputting to an itermediate format 
+                that would later be converted to JSON. The binary format is just a sequence of structs where each element represents an event:
+            </p>
+<pre class="codeblock">
+struct peTraceEventData {
+    uint64_t timestamp;
+    uint64_t duration;
+    
+    // offset to the string literal that can be later
+    // used to extract the name from the executable
+    uint64_t name_offset;
+};
+</pre>
+            <p>
+                With this I can record high accuracy timing data of any part of the codebase that can be then analyzed in spall:
             </p>
             <video width="80%" controls style="margin-top:1em;display:block;margin-left:auto;margin-right:auto">
                 <source src="assets/procyon/011_profiling.mp4" type="video/mp4">
